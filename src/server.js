@@ -1,9 +1,10 @@
+//initialization
 const express=require('express');
 const app = express();
 // const router = express.Router();
 
 const mongoose = require('mongoose');
-// const Note = require('./models/Note');
+const Note = require('./models/Note');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:false}));
@@ -15,7 +16,7 @@ const mongoDbPath="mongodb+srv://rajendrakumar123:joyboy28@cluster0.gfiifn3.mong
 mongoose.connect(mongoDbPath).then(function(){
     console.log("Connected to MongoDB");
     app.get("/",function(req,res){
-        const response = { message: "Welcome to the server" };
+        const response = {statuscode: res.statusCode, message: "API Works!"};
         // console.log("hello")
         res.send(response);
     });
